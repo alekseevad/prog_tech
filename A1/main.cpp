@@ -7,7 +7,7 @@ inline void printObject(Shape* obj);
 int main()
 {
 	Shape* objS;
-	Rectangle objR(5.0, 24.0, {1.0, 1.0});
+	Rectangle objR(-5.0, 24.0, {1.0, 1.0});
 	objS = &objR;
 	printObject(objS);
 }
