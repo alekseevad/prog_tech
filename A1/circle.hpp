@@ -2,7 +2,6 @@
 #define _CIRCLE_HPP_
 #include "shape.hpp"
 #include <cassert>
-#include "base-types.hpp"
 
 class Circle : public Shape
 {
