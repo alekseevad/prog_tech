@@ -3,19 +3,19 @@
 #include <iostream>
 
 
-Triangle::Triangle(const point_t& a, const point_t& b, const point_t& c) :
+alekseev::Triangle::Triangle(const point_t& a, const point_t& b, const point_t& c) :
 	arr_{a, b, c}
 {
 	assert((this->getArea() != 0) && "Enter valid points");
 }
 
-void Triangle::move(const point_t& pos)
+void alekseev::Triangle::move(const point_t& pos)
 {
 	const point_t destination = { pos.x - getCentre().x, pos.y - getCentre().y };
-	Triangle::move(destination.x, destination.y);
+	alekseev::Triangle::move(destination.x, destination.y);
 }
 
-void Triangle::move(const double dx, const double dy)
+void alekseev::Triangle::move(const double dx, const double dy)
 {
 	for (point_t& current : arr_)
 	{
@@ -24,7 +24,7 @@ void Triangle::move(const double dx, const double dy)
 	}
 }
 
-rectangle_t Triangle::getFrameRect() const
+alekseev::rectangle_t alekseev::Triangle::getFrameRect() const
 {
 	const double minX = std::min(std::min(arr_[0].x, arr_[1].x), arr_[2].x);
 	const double maxX = std::max(std::max(arr_[0].x, arr_[1].x), arr_[2].x);
@@ -33,12 +33,12 @@ rectangle_t Triangle::getFrameRect() const
 	return rectangle_t{ maxX - minX, maxY - minY, {minX + (maxX - minX) / 2,  minY + (maxY - minY) / 2 } };
 }
 
-double Triangle::getArea() const
+double alekseev::Triangle::getArea() const
 {
 	return(0.5 * ((arr_[0].x - arr_[2].x) * (arr_[1].y - arr_[2].y) - (arr_[1].x - arr_[2].x) * (arr_[0].y - arr_[2].y)));
 }
 
-point_t Triangle::getCentre() const
+alekseev::point_t alekseev::Triangle::getCentre() const
 {
 	return point_t{ (arr_[0].x + arr_[1].x + arr_[2].x) / 3, (arr_[0].y + arr_[1].y + arr_[2].y) / 3 };
 }
