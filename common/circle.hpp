@@ -1,7 +1,6 @@
 #ifndef _CIRCLE_HPP_
 #define _CIRCLE_HPP_
 #include "shape.hpp"
-#include <cassert>
 
 namespace alekseev
 {
@@ -15,6 +14,7 @@ namespace alekseev
 
 		double getArea() const override;
 		rectangle_t getFrameRect() const override;
+		void scale(const double mult) override;
 	private:
 		point_t pos_;
 		double rad_;

@@ -1,6 +1,7 @@
 #define _USE_MATH_DEFINES
 #include "circle.hpp"
 #include <cmath>
+#include <cassert>
 
 alekseev::Circle::Circle(const double rad, const point_t pos) :
 	rad_(rad),
@@ -32,4 +33,10 @@ alekseev::rectangle_t alekseev::Circle::getFrameRect() const
 	tempRect.height = 2 * rad_;
 	tempRect.pos = pos_;
 	return tempRect;
+}
+
+void alekseev::Circle::scale(const double mult)
+{
+	assert(mult > 0);
+	this->rad_ *= mult;
 }

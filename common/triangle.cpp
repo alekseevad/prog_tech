@@ -42,3 +42,14 @@ alekseev::point_t alekseev::Triangle::getCentre() const
 {
 	return point_t{ (arr_[0].x + arr_[1].x + arr_[2].x) / 3, (arr_[0].y + arr_[1].y + arr_[2].y) / 3 };
 }
+
+void alekseev::Triangle::scale(const double mult)
+{
+	const point_t centre = this->getCentre();
+	assert((mult > 0) && "Wrong multyplier");
+	for (point_t& temp : arr_)
+	{
+		temp.x = centre.x + (temp.x - centre.x) * mult;
+		temp.y = centre.y + (temp.y - centre.y) * mult;
+	}
+}

@@ -1,7 +1,6 @@
 #ifndef _RECTANGLE_HPP_
 #define _RECTANGLE_HPP_
 #include "shape.hpp"
-#include <cassert>
 
 namespace alekseev
 {
@@ -15,10 +14,8 @@ namespace alekseev
 
 		rectangle_t getFrameRect() const override;
 		double getArea() const override;
+		void scale(const double mult) override;
 
-		point_t getPos() const;
-		double getWidth() const;
-		double getHeight() const;
 	private:
 		double width_;
 		double height_;

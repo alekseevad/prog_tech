@@ -1,4 +1,5 @@
 #include "rectangle.hpp"
+#include <cassert>
 
 alekseev::Rectangle::Rectangle(const double width, const double height, const point_t& pos) :
 	width_(width),
@@ -33,17 +34,9 @@ double alekseev::Rectangle::getArea() const
 	return ( width_ * height_ );
 }
 
-alekseev::point_t alekseev::Rectangle::getPos() const
+void alekseev::Rectangle::scale(const double mult)
 {
-	return ( pos_ );
-}
-
-double alekseev::Rectangle::getWidth() const
-{
-	return ( width_ );
-}
-
-double alekseev::Rectangle::getHeight() const
-{
-	return ( height_ );
+	assert((mult > 0) && ("Wrong multiplier"));
+	width_ *= mult;
+	height_ *= mult;
 }

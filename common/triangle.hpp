@@ -14,6 +14,7 @@ namespace alekseev
 
 		rectangle_t getFrameRect() const override;
 		double getArea() const override;
+		void scale(const double mult) override;
 
 		point_t getCentre() const;
 	private:
