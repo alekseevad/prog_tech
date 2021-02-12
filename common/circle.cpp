@@ -1,9 +1,9 @@
-#define _USE_MATH_DEFINES
 #include "circle.hpp"
+#define _USE_MATH_DEFINES
 #include <cmath>
 #include <cassert>
 
-alekseev::Circle::Circle(const double rad, const point_t pos) :
+alekseev::Circle::Circle(const double rad, const point_t& pos) :
 	rad_(rad),
 	pos_(pos)
 {
