@@ -21,6 +21,9 @@ namespace alekseev
         double getArea() const override;
         rectangle_t getFrameRect() const override;
 
+        void addShape(const shape_ptr new_shape);
+        void removeShape(const size_t index);
+
         void move(const double dx, const double dy) override;
         void move(const point_t& pos) override;
         void scale(const double mult) override;
