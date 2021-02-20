@@ -16,7 +16,8 @@ namespace alekseev
 		double getArea() const override;
 		void scale(const double mult) override;
 
-		point_t getCentre() const;
+		point_t getCentre() const; 
+		point_t getPoint(const size_t index) const;
 	private:
 		point_t arr_[3];
 	};

@@ -1,12 +1,14 @@
 #include "triangle.hpp"
-#include <cassert>
-#include <iostream>
+#include <stdexcept>
 
 
 alekseev::Triangle::Triangle(const point_t& a, const point_t& b, const point_t& c) :
 	arr_{a, b, c}
 {
-	assert((this->getArea() != 0) && "Enter valid points");
+	if (getArea() == 0)
+	{
+		throw std::invalid_argument("Points can't lay down on one line");
+	}
 }
 
 void alekseev::Triangle::move(const point_t& pos)
@@ -46,10 +48,18 @@ alekseev::point_t alekseev::Triangle::getCentre() const
 void alekseev::Triangle::scale(const double mult)
 {
 	const point_t centre = this->getCentre();
-	assert((mult > 0) && "Wrong multyplier");
+	if (mult <= 0)
+	{
+		throw std::invalid_argument("Multyplier must be positive");
+	}
 	for (point_t& temp : arr_)
 	{
 		temp.x = centre.x + (temp.x - centre.x) * mult;
 		temp.y = centre.y + (temp.y - centre.y) * mult;
 	}
+}
+
+alekseev::point_t alekseev::Triangle::getPoint(const size_t index) const
+{
+	return arr_[index];
 }
