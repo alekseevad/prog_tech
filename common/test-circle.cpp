@@ -1,7 +1,7 @@
-#define _USE_MATH_DEFINES
+#define _USE_MATH_DEFINES   
 #include <cmath>
 #include <stdexcept>
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 #include "circle.hpp"
 
 BOOST_AUTO_TEST_SUITE(test_circle)

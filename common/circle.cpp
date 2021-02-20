@@ -1,6 +1,6 @@
 #include "circle.hpp"
 #define _USE_MATH_DEFINES
-#include <cmath>
+#include <math.h>
 #include <cassert>
 
 alekseev::Circle::Circle(const double rad, const point_t& pos) :
