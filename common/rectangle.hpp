@@ -15,7 +15,7 @@ namespace alekseev
 		rectangle_t getFrameRect() const override;
 		double getArea() const override;
 		void scale(const double mult) override;
-
+		
 	private:
 		double width_;
 		double height_;

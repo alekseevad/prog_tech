@@ -36,10 +36,11 @@ alekseev::CompositeShape::CompositeShape(CompositeShape&& another) :
 
 alekseev::Shape::shape_ptr alekseev::CompositeShape::operator[](const size_t index) const
 {
-    if((index >= 0) && (index < size_))
+    if((index < 0) || (index >= size_))
     {
-        return array_[index];
+        throw std::out_of_range("Out of range");
     }
+    return array_[index];
 }
 
 alekseev::CompositeShape& alekseev::CompositeShape::operator=(const CompositeShape& another)

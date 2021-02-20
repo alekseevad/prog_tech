@@ -40,3 +40,13 @@ void alekseev::Circle::scale(const double mult)
 	assert(mult > 0);
 	this->rad_ *= mult;
 }
+
+alekseev::point_t alekseev::Circle::getPos() const
+{
+	return pos_;
+}
+
+double alekseev::Circle::getRad() const 
+{
+	return rad_;
+}

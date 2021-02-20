@@ -15,6 +15,9 @@ namespace alekseev
 		double getArea() const override;
 		rectangle_t getFrameRect() const override;
 		void scale(const double mult) override;
+
+		point_t getPos() const;
+		double getRad() const;
 	private:
 		point_t pos_;
 		double rad_;
