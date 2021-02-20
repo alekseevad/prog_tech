@@ -16,6 +16,9 @@ namespace alekseev
 		double getArea() const override;
 		void scale(const double mult) override;
 		
+		point_t getPos() const;
+		double getWidth() const;
+		double getHeight() const;
 	private:
 		double width_;
 		double height_;

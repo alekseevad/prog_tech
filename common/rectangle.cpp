@@ -1,12 +1,15 @@
 #include "rectangle.hpp"
-#include <cassert>
+#include <stdexcept>
 
 alekseev::Rectangle::Rectangle(const double width, const double height, const point_t& pos) :
 	width_(width),
 	height_(height),
 	pos_(pos)
 {
-	assert((width > 0) && (height > 0) && "Wrong args for rectangle");
+	if ((width <= 0) || (height <= 0))
+	{
+		throw std::invalid_argument("Width/Height must be positive");
+	}
 }
 
 void alekseev::Rectangle::move(const point_t& pos)
@@ -36,7 +39,25 @@ double alekseev::Rectangle::getArea() const
 
 void alekseev::Rectangle::scale(const double mult)
 {
-	assert((mult > 0) && ("Wrong multiplier"));
+	if (mult <= 0)
+	{
+		throw std::invalid_argument("Multyplier must be positive");
+	}
 	width_ *= mult;
 	height_ *= mult;
+}
+
+alekseev::point_t alekseev::Rectangle::getPos() const
+{
+	return pos_;
+}
+
+double alekseev::Rectangle::getHeight() const
+{
+	return height_;
+}
+
+double alekseev::Rectangle::getWidth() const
+{
+	return width_;
 }

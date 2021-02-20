@@ -1,13 +1,16 @@
 #include "circle.hpp"
 #define _USE_MATH_DEFINES
 #include <math.h>
-#include <cassert>
+#include <stdexcept>
 
 alekseev::Circle::Circle(const double rad, const point_t& pos) :
 	rad_(rad),
 	pos_(pos)
 {
-	assert((rad > 0) && "Radius is zero or negative");
+	if (rad <= 0)
+	{
+		throw std::invalid_argument("Radius is zero or negative");
+	}
 }
 
 void alekseev::Circle::move(const point_t& pos)
@@ -37,8 +40,11 @@ alekseev::rectangle_t alekseev::Circle::getFrameRect() const
 
 void alekseev::Circle::scale(const double mult)
 {
-	assert(mult > 0);
-	this->rad_ *= mult;
+	if (mult <= 0)
+	{
+		throw std::invalid_argument("Multyplier must be positive");
+	}
+	rad_ *= mult;
 }
 
 alekseev::point_t alekseev::Circle::getPos() const
