@@ -47,7 +47,7 @@ void alekseev::Circle::scale(const double mult)
 	rad_ *= mult;
 }
 
-alekseev::point_t alekseev::Circle::getPos() const
+alekseev::point_t alekseev::Circle::getPosition() const
 {
 	return pos_;
 }

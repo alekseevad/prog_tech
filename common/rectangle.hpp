@@ -12,11 +12,11 @@ namespace alekseev
 		void move(const point_t& pos) override;
 		void move(const double dx, const double dy) override;
 
+		point_t getPosition() const override;
 		rectangle_t getFrameRect() const override;
 		double getArea() const override;
 		void scale(const double mult) override;
 		
-		point_t getPos() const;
 		double getWidth() const;
 		double getHeight() const;
 	private:

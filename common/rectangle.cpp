@@ -47,9 +47,9 @@ void alekseev::Rectangle::scale(const double mult)
 	height_ *= mult;
 }
 
-alekseev::point_t alekseev::Rectangle::getPos() const
+alekseev::point_t alekseev::Rectangle::getPosition() const
 {
-	return pos_;
+	return getFrameRect().pos;
 }
 
 double alekseev::Rectangle::getHeight() const

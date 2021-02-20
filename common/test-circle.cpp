@@ -17,8 +17,8 @@ BOOST_AUTO_TEST_CASE(test_constructor_getters)
 
     alekseev::Circle test_circle(RAD, POSITION);
 
-    BOOST_CHECK_CLOSE(test_circle.getPos().x, POSITION.x, EPS);
-    BOOST_CHECK_CLOSE(test_circle.getPos().y, POSITION.y, EPS);
+    BOOST_CHECK_CLOSE(test_circle.getPosition().x, POSITION.x, EPS);
+    BOOST_CHECK_CLOSE(test_circle.getPosition().y, POSITION.y, EPS);
     BOOST_CHECK_CLOSE(test_circle.getRad(), RAD, EPS);
 }
 
@@ -38,8 +38,8 @@ BOOST_AUTO_TEST_CASE(test_move_to_pos)
     const alekseev::point_t new_pos = {5, 10.5};
     test_circle.move(new_pos);
 
-    BOOST_CHECK_CLOSE(test_circle.getPos().x, new_pos.x, EPS);
-    BOOST_CHECK_CLOSE(test_circle.getPos().y, new_pos.y, EPS);
+    BOOST_CHECK_CLOSE(test_circle.getPosition().x, new_pos.x, EPS);
+    BOOST_CHECK_CLOSE(test_circle.getPosition().y, new_pos.y, EPS);
     BOOST_CHECK_CLOSE(test_circle.getFrameRect().pos.x, new_pos.x, EPS);
     BOOST_CHECK_CLOSE(test_circle.getFrameRect().pos.y, new_pos.y, EPS);
 
@@ -56,8 +56,8 @@ BOOST_AUTO_TEST_CASE(test_move_to_offset)
     const double dy = 3.5;
     test_circle.move(dx, dy);
 
-    BOOST_CHECK_CLOSE(test_circle.getPos().x, POSITION.x + dx, EPS);
-    BOOST_CHECK_CLOSE(test_circle.getPos().y, POSITION.y + dy, EPS);
+    BOOST_CHECK_CLOSE(test_circle.getPosition().x, POSITION.x + dx, EPS);
+    BOOST_CHECK_CLOSE(test_circle.getPosition().y, POSITION.y + dy, EPS);
     BOOST_CHECK_CLOSE(test_circle.getFrameRect().pos.x, POSITION.x + dx, EPS);
     BOOST_CHECK_CLOSE(test_circle.getFrameRect().pos.y, POSITION.y + dy, EPS);
 
@@ -73,13 +73,13 @@ BOOST_AUTO_TEST_CASE(test_scale)
     const double coef = 5;
     test_circle.scale(coef);
 
-    BOOST_CHECK_CLOSE(test_circle.getPos().x, POSITION.x, EPS);
-    BOOST_CHECK_CLOSE(test_circle.getPos().y, POSITION.y, EPS);
+    BOOST_CHECK_CLOSE(test_circle.getPosition().x, POSITION.x, EPS);
+    BOOST_CHECK_CLOSE(test_circle.getPosition().y, POSITION.y, EPS);
     BOOST_CHECK_CLOSE(test_circle.getRad(), RAD * coef, EPS);
     BOOST_CHECK_CLOSE(test_circle.getArea(), AREA * std::pow(coef, 2), EPS);
 
-    BOOST_CHECK_CLOSE(test_circle.getPos().x, test_circle.getFrameRect().pos.x, EPS);
-    BOOST_CHECK_CLOSE(test_circle.getPos().y, test_circle.getFrameRect().pos.y, EPS);
+    BOOST_CHECK_CLOSE(test_circle.getPosition().x, test_circle.getFrameRect().pos.x, EPS);
+    BOOST_CHECK_CLOSE(test_circle.getPosition().y, test_circle.getFrameRect().pos.y, EPS);
     BOOST_CHECK_CLOSE(test_circle.getRad() * 2, test_circle.getFrameRect().width, EPS);
     BOOST_CHECK_CLOSE(test_circle.getRad() * 2, test_circle.getFrameRect().height, EPS);
 }

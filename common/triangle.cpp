@@ -63,3 +63,8 @@ alekseev::point_t alekseev::Triangle::getPoint(const size_t index) const
 {
 	return arr_[index];
 }
+
+alekseev::point_t alekseev::Triangle::getPosition() const
+{
+	return getFrameRect().pos;
+}

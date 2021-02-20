@@ -18,8 +18,8 @@ BOOST_AUTO_TEST_CASE(test_constructor_getters)
 
 	BOOST_CHECK_CLOSE(test_rect.getHeight(), HEIGHT, EPS);
 	BOOST_CHECK_CLOSE(test_rect.getWidth(), WIDTH, EPS);
-	BOOST_CHECK_CLOSE(test_rect.getPos().x, POS.x, EPS);
-	BOOST_CHECK_CLOSE(test_rect.getPos().y, POS.y, EPS);
+	BOOST_CHECK_CLOSE(test_rect.getPosition().x, POS.x, EPS);
+	BOOST_CHECK_CLOSE(test_rect.getPosition().y, POS.y, EPS);
 }
 
 BOOST_AUTO_TEST_CASE(test_frame_rect)
@@ -38,8 +38,8 @@ BOOST_AUTO_TEST_CASE(test_move_to_pos)
     const alekseev::point_t new_pos = { 5, 10.5 };
     test_rect.move(new_pos);
 
-    BOOST_CHECK_CLOSE(test_rect.getPos().x, new_pos.x, EPS);
-    BOOST_CHECK_CLOSE(test_rect.getPos().y, new_pos.y, EPS);
+    BOOST_CHECK_CLOSE(test_rect.getPosition().x, new_pos.x, EPS);
+    BOOST_CHECK_CLOSE(test_rect.getPosition().y, new_pos.y, EPS);
     BOOST_CHECK_CLOSE(test_rect.getFrameRect().pos.x, new_pos.x, EPS);
     BOOST_CHECK_CLOSE(test_rect.getFrameRect().pos.y, new_pos.y, EPS);
 
@@ -56,8 +56,8 @@ BOOST_AUTO_TEST_CASE(test_move_to_offset)
     const double dy = 3.5;
     test_rect.move(dx, dy);
 
-    BOOST_CHECK_CLOSE(test_rect.getPos().x, POS.x + dx, EPS);
-    BOOST_CHECK_CLOSE(test_rect.getPos().y, POS.y + dy, EPS);
+    BOOST_CHECK_CLOSE(test_rect.getPosition().x, POS.x + dx, EPS);
+    BOOST_CHECK_CLOSE(test_rect.getPosition().y, POS.y + dy, EPS);
     BOOST_CHECK_CLOSE(test_rect.getFrameRect().pos.x, POS.x + dx, EPS);
     BOOST_CHECK_CLOSE(test_rect.getFrameRect().pos.y, POS.y + dy, EPS);
 
@@ -80,8 +80,8 @@ BOOST_AUTO_TEST_CASE(test_scale)
     BOOST_CHECK_CLOSE(test_rect.getHeight(), HEIGHT * coef, EPS);
     BOOST_CHECK_CLOSE(test_rect.getArea(), AREA * std::pow(coef, 2), EPS);
 
-    BOOST_CHECK_CLOSE(test_rect.getPos().x, test_rect.getFrameRect().pos.x, EPS);
-    BOOST_CHECK_CLOSE(test_rect.getPos().y, test_rect.getFrameRect().pos.y, EPS);
+    BOOST_CHECK_CLOSE(test_rect.getPosition().x, test_rect.getFrameRect().pos.x, EPS);
+    BOOST_CHECK_CLOSE(test_rect.getPosition().y, test_rect.getFrameRect().pos.y, EPS);
     BOOST_CHECK_CLOSE(test_rect.getWidth(), test_rect.getFrameRect().width, EPS);
     BOOST_CHECK_CLOSE(test_rect.getHeight(), test_rect.getFrameRect().height, EPS);
 }

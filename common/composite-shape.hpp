@@ -12,12 +12,13 @@ namespace alekseev
     public:
         CompositeShape();
         CompositeShape(const CompositeShape& another);
-        CompositeShape(CompositeShape&& another);
+        CompositeShape(CompositeShape&& another) noexcept;
 
         CompositeShape& operator=(const CompositeShape& another);
-        CompositeShape& operator=(CompositeShape&& another);
+        CompositeShape& operator=(CompositeShape&& another) noexcept;
         shape_ptr operator[](const size_t index) const;
-
+        
+        point_t getPosition() const override;
         double getArea() const override;
         rectangle_t getFrameRect() const override;
 
@@ -27,6 +28,8 @@ namespace alekseev
         void move(const double dx, const double dy) override;
         void move(const point_t& pos) override;
         void scale(const double mult) override;
+
+        std::size_t getSize() const;
     private:
         shape_array array_;
         std::size_t size_;

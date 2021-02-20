@@ -23,7 +23,7 @@ alekseev::CompositeShape::CompositeShape(const CompositeShape& another) :
     }
 }
 
-alekseev::CompositeShape::CompositeShape(CompositeShape&& another) :
+alekseev::CompositeShape::CompositeShape(CompositeShape&& another) noexcept :
     array_(nullptr),
     size_(another.size_)
 {
@@ -66,7 +66,7 @@ alekseev::CompositeShape& alekseev::CompositeShape::operator=(const CompositeSha
     return *this;
 }
 
-alekseev::CompositeShape& alekseev::CompositeShape::operator=(CompositeShape&& another)
+alekseev::CompositeShape& alekseev::CompositeShape::operator=(CompositeShape&& another) noexcept
 {
     if(&another.size_ != 0)
     {
@@ -186,4 +186,19 @@ void alekseev::CompositeShape::scale(const double mult)
         pos.y + (array_[i]->getFrameRect().pos.y - pos.y) * mult });
         array_[i]->scale(mult);
     }
+}
+
+
+alekseev::point_t alekseev::CompositeShape::getPosition() const
+{
+    if (size_ == 0)
+    {
+        throw std::logic_error("Empty Shape can't have a position");
+    }
+    return getFrameRect().pos;
+}
+
+std::size_t alekseev::CompositeShape::getSize() const
+{
+    return size_;
 }
