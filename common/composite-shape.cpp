@@ -83,7 +83,7 @@ alekseev::CompositeShape& alekseev::CompositeShape::operator=(CompositeShape&& a
 
 void alekseev::CompositeShape::addShape(const shape_ptr new_shape)
 {
-    if (new_shape.get() == this)
+    if ((new_shape.get() == this) || (new_shape == nullptr))
     {
         throw std::invalid_argument("Shape cannot be part of itself");
     }
@@ -99,7 +99,7 @@ void alekseev::CompositeShape::addShape(const shape_ptr new_shape)
 
 void alekseev::CompositeShape::removeShape(const size_t index)
 {
-    if (index >= size_)
+    if ((index >= size_) || (index < 0))
     {
         throw std::out_of_range("Out of range");
     }
