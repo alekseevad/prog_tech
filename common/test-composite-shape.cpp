@@ -290,6 +290,4 @@ BOOST_FIXTURE_TEST_CASE(test_logic_errors, empty_fixture)
     BOOST_CHECK_THROW(testCmpShape.scale(7), std::logic_error);
 }
 
-
-
 BOOST_AUTO_TEST_SUITE_END()
