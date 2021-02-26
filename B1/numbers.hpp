@@ -1,36 +1,44 @@
-#ifndef _NUMBERS_VECTOR_HPP
-#define _NUMBERS_VECTOR_HPP
+#ifndef NUMBERS_HPP
+#define NUMBERS_HPP
 
-#include <iostream>
-#include <stdexcept>
-#include <vector>
-#include <list>
+#include <algorithm>
+#include <cstddef>
+#include "utilities.hpp"
 
-enum class Order
+template <template<typename> typename Access, typename Collection>
+void sort(Collection& collection, const Order order)
 {
-	ASCENDING,
-	DESCENDING
-};
+  using access_type = Access<Collection>;
+  using index_type = typename access_type::index_type;
+  index_type begin = access_type::begin(collection);
+  index_type end = access_type::end(collection);
 
-class Numbers
-{
-public:
-	void printData();
-	void readData();
+  for (index_type i = begin; i != end; ++i)
+  {
+    for (index_type j = i; j != end; ++j)
+    {
+      if ((access_type::getElement(collection, i) > access_type::getElement(collection, j))
+          && (order == Order::ASCENDING))
+      {
+        std::swap(access_type::getElement(collection, i), access_type::getElement(collection, j));
+      }
+      else if ((access_type::getElement(collection, i) < access_type::getElement(collection, j))
+          && (order == Order::DESCENDING))
+      {
+        std::swap(access_type::getElement(collection, i), access_type::getElement(collection, j));
+      }
+    }
+  }
+}
 
-	void sort1(const char* order);
-	void sort2(const char* order);
-	void sort3();
+void number1(const char* order);
 
-	void setType(int type);
+void number2(const char* file_name);
 
-	~Numbers();
-private:
-	int type_;
-	std::vector<int> arr_;
-	std::list<int> list_;
-};
+void number3();
 
-Order checkOrder(const char* order);
+void fillRandom(double* array, const std::size_t size);
+
+void number4(const char* order, const int array_size);
 
 #endif
